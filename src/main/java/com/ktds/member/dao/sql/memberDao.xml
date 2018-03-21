@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="MemberDao">
+ 	
+ 	<insert id="insertMember" parameterType="MemberVO">
+ 	 	INSERT	INTO MEMBER (
+ 	 		ID
+ 	 		, EAMIL
+ 	 		, NICKNAME
+ 	 		, PASSWORD
+ 	 		, REGIST_DATE
+ 	 	)
+ 	 	VALUES ( 
+ 	 		MEMBER_ID_SEQ.NEXTVAL 
+ 	 		, #{email}     
+ 	 		, #{nickname}
+ 	 		, #{password}
+ 	 		, SYSDATE
+ 	 		
+ 	 	)
+ 	 	
+ 	 </insert>
+ 	 
+ 	 <!-- 이메일 페스워드 가져와서 조회하는거 -->
+ 	 <select id="selectMember" parameterType="MemberVO" resultType="MemberVO">
+ 	 	SELECT	ID
+ 	 			, EAMIL email
+ 	 			, NICKNAME
+ 	 			, REGIST_DATE registDate
+ 	 	FROM	MEMBER
+ 	 	WHERE	EAMIL = #{email}
+ 	 	AND		PASSWORD = #{password}
+ 	 </select>
+ 	 
+ 	 <delete id="removeMember" parameterType="_int">
+ 	 	DELETE
+ 	 	FROM	MEMBER
+ 	 	WHERE	ID = #{id}
+ 	 	
+ 	 </delete>
+		
+  </mapper>
