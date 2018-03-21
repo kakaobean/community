@@ -36,7 +36,7 @@ public class MemberController {
 		this.communityService = communityService;
 	}
 	
-	
+	 
 
 	public MemberService getMemberService() {
 		return memberService;
